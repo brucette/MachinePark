@@ -1,0 +1,18 @@
+﻿<h3>DashBoard</h3>
+
+@if (Stats == null)
+{
+    <p>Loading...</p>
+}
+else
+{
+    <div>
+        <div>
+            Total machine count: @Stats.TotalCount
+        </div>
+        <div>
+            Machines online: @Stats.MachinesOnline
+        </div>
+    </div>
+}
+

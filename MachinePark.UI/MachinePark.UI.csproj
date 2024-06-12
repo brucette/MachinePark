@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="Components\MachineOverview.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Components\Pages\MachineOverview.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MachinePark.Core\MachinePark.Core.csproj" />
+  </ItemGroup>
+
+</Project>

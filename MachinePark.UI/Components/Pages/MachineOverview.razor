@@ -1,0 +1,39 @@
+﻿@page "/"
+
+<PageTitle>Overview of machines in park</PageTitle>
+
+@if (Machines == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Machine Id</th>
+                <th>Name</th>
+                <th>Status</th>  
+                <th>Location</th>  
+                <th>Last update</th>
+                <th>Last log</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var machine in Machines)
+            {
+                <tr>
+                    <td>@machine.MachineId</td>
+                    <td>@machine.Name</td>
+                    <td>@(machine.IsOnline ? "Online" : "Offline") </td>
+                    <td>@machine.Location</td>
+                    @if (machine.LatestData != null)
+                    {
+                        <td>@machine.LatestData.Time</td>
+                        <td>@machine.LatestData.Data</td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+}
