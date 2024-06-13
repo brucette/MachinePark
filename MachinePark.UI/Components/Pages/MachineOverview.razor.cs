@@ -10,7 +10,10 @@ namespace MachinePark.UI.Components.Pages
     {
         [Inject]
         public HttpClient Http { get; set; }
-        
+
+        [Inject]
+        public NavigationManager NavigationManager { get; set; }
+
         public List<MachineWithLatestData> Machines { get; set; }
 
         protected async override Task OnInitializedAsync()
@@ -21,6 +24,7 @@ namespace MachinePark.UI.Components.Pages
         private void SendData()
         {
             //;
+            NavigationManager.NavigateTo("/sendmessage");
         }
         
         private void DeleteMachine()
@@ -30,7 +34,7 @@ namespace MachinePark.UI.Components.Pages
         
         private void UpdateMachine()
         {
-            //;
+            //NavigationManager.NavigateTo("/sendmessage");
         }
 
         private void ChangeStatus()
