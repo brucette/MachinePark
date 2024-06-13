@@ -44,9 +44,11 @@ else
                         <td></td>
                     }
                     <td>
-                        <button type="button" class="btn btn-outline-primary me-1" @onclick="@SendData">Send data</button>
-                        <button type="button" class="btn btn-outline-primary me-1" @onclick="@DeleteMachine">Send data</button>
-                        <button type="button" class="btn btn-outline-primary me-1" @onclick="@UpdateMachine">Send data</button>
+                        @* <button type="button" class="btn btn-outline-primary me-1" @onclick="() => NavigateToSendMessage(machine.MachineId)">Send data</button> *@
+                        <NavLink class="btn btn-outline-success" href="@($" /sendmessage/{machine.MachineId}")">Send Message</NavLink>
+
+                        <button type="button" class="btn btn-outline-primary me-1" @onclick="@DeleteMachine">Delete</button>
+                        <button type="button" class="btn btn-outline-primary me-1" @onclick="@UpdateMachine">Edit</button>
                     </td>
                 </tr>
             }

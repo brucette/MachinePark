@@ -11,12 +11,6 @@
                 <InputText id="name" class="form-control col-md-8" @bind-Value="@Machine.Name" placeholder="Enter name"></InputText>
             </div>
         </div>
-       @*  <div class="row mb-3">
-            <label for="online" class="col-form-label col-md-3">Online status: </label>
-            <div class="col-md-8">
-                <InputText id="online" class="form-control col-md-8" @bind-Value="@Machine.IsOnline" placeholder="Enter name"></InputText>
-            </div>
-        </div> *@
         <div class="row mb-3">
             <InputRadioGroup Name="onlineRadioGroup" @bind-Value="@Machine.IsOnline">
                 <label class="col-form-label col-md-3">Is Online: </label>
@@ -38,7 +32,6 @@
                 <InputText id="location" class="form-control col-md-8" @bind-Value="@Machine.Location" placeholder="Enter name"></InputText>
             </div>
         </div>
-
         <div>
             <button type="submit" class="btn btn-outline-primary ms-1">Submit</button>
         </div>

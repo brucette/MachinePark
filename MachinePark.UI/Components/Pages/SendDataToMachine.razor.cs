@@ -5,6 +5,9 @@ namespace MachinePark.UI.Components.Pages
 {
     public partial class SendDataToMachine
     {
+        [Parameter]
+        public string MachineId { get; set; }   
+
         [SupplyParameterFromForm]
         public ReceivedData ReceivedData { get; set; }
 
@@ -17,6 +20,18 @@ namespace MachinePark.UI.Components.Pages
         protected override void OnInitialized()
         {
             ReceivedData ??= new();
+        }
+
+        private async Task OnMessageSubmit()
+        {
+            ReceivedData.MachineId = Guid.Parse(MachineId);
+            ReceivedData.Time = DateTime.UtcNow;
+                
+            //Console.WriteLine($"newData is: {ReceivedData.MachineId}, {ReceivedData.Time}, {ReceivedData.Data}");
+
+            await Http.PostAsJsonAsync("api/receiveddata", ReceivedData);
+            IsSaved = true;
+            Message = "Message sent successfully";
         }
     }
 }

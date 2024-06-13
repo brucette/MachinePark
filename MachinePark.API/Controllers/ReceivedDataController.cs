@@ -1,7 +1,7 @@
-﻿using MachinePark.Core.Domain;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using MachinePark.Core.Domain;
+using Microsoft.AspNetCore.Http;
 
 namespace MachinePark.API.Controllers
 {

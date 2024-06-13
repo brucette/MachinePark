@@ -3,6 +3,7 @@ using MachinePark.Core.Models;
 using MachinePark.Data.Domain;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Http;
+using System.Reflection.PortableExecutable;
 
 namespace MachinePark.UI.Components.Pages
 {
@@ -11,8 +12,8 @@ namespace MachinePark.UI.Components.Pages
         [Inject]
         public HttpClient Http { get; set; }
 
-        [Inject]
-        public NavigationManager NavigationManager { get; set; }
+        //[Inject]
+        //public NavigationManager NavigationManager { get; set; }
 
         public List<MachineWithLatestData> Machines { get; set; }
 
@@ -21,12 +22,10 @@ namespace MachinePark.UI.Components.Pages
             Machines = await Http.GetFromJsonAsync<List<MachineWithLatestData>>("api/machines");
         }
 
-        private void SendData()
-        {
-            //;
-            NavigationManager.NavigateTo("/sendmessage");
-        }
-        
+        //private void NavigateToSendMessage(Guid MachineId)
+        //{
+        //    NavigationManager.NavigateTo($"/sendmessage/{MachineId}");
+        //}
         private void DeleteMachine()
         {
             //;
