@@ -17,6 +17,6 @@ namespace MachinePark.Core.Domain
 
         public string Data { get; set; }
 
-        public Machine Machine { get; set; }
+        //public Machine Machine { get; set; }
     }
 }

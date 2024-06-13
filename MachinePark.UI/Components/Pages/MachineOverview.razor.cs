@@ -10,15 +10,32 @@ namespace MachinePark.UI.Components.Pages
     {
         [Inject]
         public HttpClient Http { get; set; }
-        //public Machine[] Machines { get; set; }
+        
         public List<MachineWithLatestData> Machines { get; set; }
-
-        //public ReceivedData? LastDataReceived { get; set; }
 
         protected async override Task OnInitializedAsync()
         {
-            //Machines = await Http.GetFromJsonAsync<Machine[]>("api/machines");
             Machines = await Http.GetFromJsonAsync<List<MachineWithLatestData>>("api/machines");
+        }
+
+        private void SendData()
+        {
+            //;
+        }
+        
+        private void DeleteMachine()
+        {
+            //;
+        }
+        
+        private void UpdateMachine()
+        {
+            //;
+        }
+
+        private void ChangeStatus()
+        {
+            //Employee.IsOnHoliday = !Employee.IsOnHoliday;
         }
     }
 }

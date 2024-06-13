@@ -1,0 +1,50 @@
+﻿@page "/addmachine"
+
+<h3>Add Machine</h3>
+
+@if (!IsSaved)
+{
+    <EditForm Model="Machine" OnSubmit="OnSubmit" Enhance FormName="AddMachineForm">
+        <div class="row mb-3">
+            <label for="name" class="col-form-label col-md-3">Name: </label>
+            <div class="col-md-8">
+                <InputText id="name" class="form-control col-md-8" @bind-Value="@Machine.Name" placeholder="Enter name"></InputText>
+            </div>
+        </div>
+       @*  <div class="row mb-3">
+            <label for="online" class="col-form-label col-md-3">Online status: </label>
+            <div class="col-md-8">
+                <InputText id="online" class="form-control col-md-8" @bind-Value="@Machine.IsOnline" placeholder="Enter name"></InputText>
+            </div>
+        </div> *@
+        <div class="row mb-3">
+            <InputRadioGroup Name="onlineRadioGroup" @bind-Value="@Machine.IsOnline">
+                <label class="col-form-label col-md-3">Is Online: </label>
+                <div class="col-md-8">
+                    @foreach (var status in OnlineStatus)
+                    {
+                        <InputRadio Name="onlineRadioGroup" Value="status" class="form-check-input" />
+                        <label class="form-check-label">
+                            @status  
+                        </label>
+                        <br />
+                    }
+                </div>
+            </InputRadioGroup>
+        </div>
+        <div class="row mb-3">
+            <label for="location" class="col-form-label col-md-3">Location: </label>
+            <div class="col-md-8">
+                <InputText id="location" class="form-control col-md-8" @bind-Value="@Machine.Location" placeholder="Enter name"></InputText>
+            </div>
+        </div>
+
+        <div>
+            <button type="submit" class="btn btn-outline-primary ms-1">Submit</button>
+        </div>
+    </EditForm>
+}
+else
+{
+    <h4 class="text-success">@Message</h4>
+}

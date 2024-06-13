@@ -37,7 +37,6 @@ namespace MachinePark.API.Controllers
                 .Where(rd => rd.MachineId == m.MachineId)
                 .OrderByDescending(rd => rd.Time)
                 .FirstOrDefault()
-
             }).ToListAsync();
 
             return Ok(machines);
@@ -107,7 +106,6 @@ namespace MachinePark.API.Controllers
         }
 
         // POST: api/Machines
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<Machine>> PostMachine(Machine machine)
         {

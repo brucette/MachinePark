@@ -17,6 +17,7 @@ else
                 <th>Location</th>  
                 <th>Last update</th>
                 <th>Last log</th>
+                <th>Manage</th>
             </tr>
         </thead>
         <tbody>
@@ -25,13 +26,28 @@ else
                 <tr>
                     <td>@machine.MachineId</td>
                     <td>@machine.Name</td>
-                    <td>@(machine.IsOnline ? "Online" : "Offline") </td>
+                    <td>
+                        @(machine.IsOnline ?
+                            (MarkupString)"<span class='badge bg-success'>Online</span>" :
+                            (MarkupString)"<span class='badge bg-danger'>Offline</span>")
+
+                        <button type="button" class="btn btn-outline-primary me-1" @onclick="@ChangeStatus">Change status</button>
+                    </td>
                     <td>@machine.Location</td>
                     @if (machine.LatestData != null)
                     {
                         <td>@machine.LatestData.Time</td>
                         <td>@machine.LatestData.Data</td>
+                    }else
+                    {
+                        <td></td>
+                        <td></td>
                     }
+                    <td>
+                        <button type="button" class="btn btn-outline-primary me-1" @onclick="@SendData">Send data</button>
+                        <button type="button" class="btn btn-outline-primary me-1" @onclick="@DeleteMachine">Send data</button>
+                        <button type="button" class="btn btn-outline-primary me-1" @onclick="@UpdateMachine">Send data</button>
+                    </td>
                 </tr>
             }
         </tbody>
