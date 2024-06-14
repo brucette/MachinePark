@@ -30,16 +30,6 @@ else
                     <td>@machine.MachineId</td>
                     <td>@machine.Name</td>
                     <td>
-                        @* @(machine.IsOnline ?
-                            (MarkupString)"<span class='badge bg-success'>Online</span>< i class='bi bi-toggle-on'></i>" :
-                            (MarkupString)"<span class='badge bg-danger'>Offline</span>")
-
-                        <button 
-                            type="button" 
-                            class="btn btn-outline-primary me-1" 
-                            @onclick="() => ChangeStatus(machine)">
-                            Toggle
-                        </button> *@
                         @if (machine.IsOnline)
                         {
                             <span class="badge bg-success">Online</span>
@@ -79,15 +69,18 @@ else
                     }
                     <td>
                         @* <button type="button" class="btn btn-outline-primary me-1" @onclick="() => NavigateToSendMessage(machine.MachineId)">Send data</button> *@
-                        <NavLink class="btn me-1" href="@($" /sendmessage/{machine.MachineId}")">
+                        <NavLink class="btn me-1" href="@($"/sendmessage/{machine.MachineId}")">
                             <i class="bi bi-chat-right-dots-fill"></i>
                         </NavLink>
                         <button type="button" class="btn me-1" @onclick="() => DeleteMachine(machine)">
                             <i class="bi bi-trash3-fill"></i>
                         </button>
-                        <button type="button" class="btn me-1" @onclick="@UpdateMachine">
+                        @* <button type="button" class="btn me-1" @onclick="@UpdateMachine">
                             <i class="bi bi-pencil-fill"></i>
-                        </button>
+                        </button> *@
+                        <NavLink class="btn me-1" href="@($"/editmachine/{machine.MachineId}")">
+                            <i class="bi bi-pencil-fill"></i>
+                        </NavLink>
                     </td>
                 </tr>
             }

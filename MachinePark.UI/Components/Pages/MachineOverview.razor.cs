@@ -1,6 +1,7 @@
 ﻿using MachinePark.Core.Domain;
 using MachinePark.Core.Models;
 using MachinePark.Data.Domain;
+using MachinePark.UI.State;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Http;
 
@@ -13,11 +14,11 @@ namespace MachinePark.UI.Components.Pages
 
         //[Inject]
         //public NavigationManager NavigationManager { get; set; }
+        //
 
         public List<MachineWithLatestData> Machines { get; set; }
 
         protected async override Task OnInitializedAsync()
-        //protected override async Task OnParametersSetAsync()
         {
             Machines = await Http.GetFromJsonAsync<List<MachineWithLatestData>>("api/machines");
         }
@@ -39,8 +40,10 @@ namespace MachinePark.UI.Components.Pages
         private void UpdateMachine()
         {
             //NavigationManager.NavigateTo("/sendmessage");
+                //AppState.Data = "Updated Data";
         }
 
+        // Just change on UI
         //private void ChangeStatus(MachineWithLatestData machine)
         //{
         //    machine.IsOnline = !machine.IsOnline;

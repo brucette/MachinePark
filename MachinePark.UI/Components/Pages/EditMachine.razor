@@ -1,0 +1,56 @@
+﻿@page "/editmachine/{MachineId}"
+@rendermode InteractiveServer
+
+<div class="container col-8 border">
+    <h3>Edit Machine</h3>
+
+    @if (!IsSaved)
+    {
+        <EditForm Model="Machine" 
+            OnValidSubmit="OnEditSubmit"
+            Enhance 
+            FormName="EditMessageForm">
+
+            @* <div class="row mb-3">
+                <label for="machineId" class="col-form-label col-md-3">Name: </label>
+                <div class="col-md-8">
+                    <InputText id="machineId" class="form-control col-md-8" @bind-Value="@Machine.MachineId" readonly></InputText>
+                </div>
+            </div> *@
+            <div class="row mb-3">
+                <label for="name" class="col-form-label col-md-3">Name: </label>
+                <div class="col-md-8">
+                    <InputText id="name" class="form-control col-md-8" @bind-Value="@Machine.Name"></InputText>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <InputRadioGroup Name="onlineRadioGroup" @bind-Value="@Machine.IsOnline">
+                    <label class="col-form-label col-md-3">Is Online: </label>
+                    <div class="col-md-8">
+                        @foreach (var status in OnlineStatus)
+                        {
+                            <InputRadio Name="onlineRadioGroup" Value="status" class="form-check-input" />
+                            <label class="form-check-label">
+                                @status
+                            </label>
+                            <br />
+                        }
+                    </div>
+                </InputRadioGroup>
+            </div>
+            <div class="row mb-3">
+                <label for="location" class="col-form-label col-md-3">Location: </label>
+                <div class="col-md-8">
+                    <InputText id="location" class="form-control col-md-8" @bind-Value="@Machine.Location" placeholder="Enter name"></InputText>
+                </div>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-outline-secondary ms-1">Submit</button>
+            </div>
+        </EditForm>
+    }
+    else 
+    {
+        <h4 class="text-success">@Message</h4>
+    }
+</div>

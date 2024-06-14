@@ -26,8 +26,6 @@ namespace MachinePark.UI.Components.Pages
         {
             ReceivedData.MachineId = Guid.Parse(MachineId);
             ReceivedData.Time = DateTime.UtcNow;
-                
-            //Console.WriteLine($"newData is: {ReceivedData.MachineId}, {ReceivedData.Time}, {ReceivedData.Data}");
 
             await Http.PostAsJsonAsync("api/receiveddata", ReceivedData);
             IsSaved = true;
