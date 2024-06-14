@@ -3,7 +3,6 @@ using MachinePark.Core.Models;
 using MachinePark.Data.Domain;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Http;
-using System.Reflection.PortableExecutable;
 
 namespace MachinePark.UI.Components.Pages
 {
@@ -18,6 +17,7 @@ namespace MachinePark.UI.Components.Pages
         public List<MachineWithLatestData> Machines { get; set; }
 
         protected async override Task OnInitializedAsync()
+        //protected override async Task OnParametersSetAsync()
         {
             Machines = await Http.GetFromJsonAsync<List<MachineWithLatestData>>("api/machines");
         }
@@ -26,19 +26,40 @@ namespace MachinePark.UI.Components.Pages
         //{
         //    NavigationManager.NavigateTo($"/sendmessage/{MachineId}");
         //}
-        private void DeleteMachine()
+        private async Task DeleteMachine(MachineWithLatestData machine)
         {
-            //;
+            var response = await Http.DeleteAsync($"api/machines/{machine.MachineId}");
+
+            if (response.IsSuccessStatusCode)
+            {
+                await OnInitializedAsync();
+            }
         }
-        
+
         private void UpdateMachine()
         {
             //NavigationManager.NavigateTo("/sendmessage");
         }
 
-        private void ChangeStatus()
+        //private void ChangeStatus(MachineWithLatestData machine)
+        //{
+        //    machine.IsOnline = !machine.IsOnline;
+        //}
+        private async Task ChangeStatus(MachineWithLatestData machine)
         {
-            //Employee.IsOnHoliday = !Employee.IsOnHoliday;
+            var changedMachine = new Machine
+            {
+                MachineId = machine.MachineId,
+                Name = machine.Name,
+                IsOnline = !machine.IsOnline,
+                Location = machine.Location
+            };
+            
+            var response = await Http.PutAsJsonAsync($"api/machines/{machine.MachineId}", changedMachine);
+            if (response.IsSuccessStatusCode)
+            {
+                await OnInitializedAsync();
+            }
         }
     }
 }

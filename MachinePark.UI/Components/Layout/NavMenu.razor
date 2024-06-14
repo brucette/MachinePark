@@ -1,29 +1,44 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
+﻿<nav class="navbar navbar-expand-lg fixed-top px-5"
+     aria-label="Machine par manager's navigation header">
     <div class="container-fluid">
-        <a class="navbar-brand" href="">MachinePark</a>
+        <div class="navbar-brand text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-hdd-fill" viewBox="0 0 16 16">
+                <path d="M0 10a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2.5 1a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1m2 0a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1M.91 7.204A3 3 0 0 1 2 7h12c.384 0 .752.072 1.09.204l-1.867-3.422A1.5 1.5 0 0 0 11.906 3H4.094a1.5 1.5 0 0 0-1.317.782z" />
+            </svg>
+        </div>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <h3 class="navbar-brand me-auto ms-5">Machine Park Manager</h3>
+
+               @*  <NavLink class="nav-link text-white " href="" Match="NavLinkMatch.All">
+                    <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Home
+                </NavLink> *@
+
+                <NavLink href="/" class="text-white text-decoration-none">
+                    Overview
+                </NavLink>
+
+                <NavLink href="/addmachine" class="nav-link @* text-white *@">
+                    Add new machine
+                </NavLink>
+            
+
+            @* <ul class="navbar-nav mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <div class="nav-link">
+                        Overview
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <div class="nav-link">
+                    </div>
+                </li>
+            </ul> *@
+        </div>
     </div>
-</div>
-
-<input type="checkbox" title="Navigation menu" class="navbar-toggler" />
-
-@* <div class="nav-scrollable" onclick="document.querySelector('.navbar-toggler').click()"> *@
-<div class="navbar navbar-expand-lg" onclick="document.querySelector('.navbar-toggler').click()">
-    @* <nav class="flex-column"> *@
-    @* <nav class="flex"> *@
-        @* <div class="nav-item px-3"> *@
-        <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-            <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Home
-        </NavLink>
-        @* </div> *@
-
-        @* <div class="nav-item px-3"> *@
-        <NavLink class="nav-link" href="weather">
-            <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Weather
-        </NavLink>
-        <NavLink class="" href="/addmachine">
-            Add New Machine
-        </NavLink>
-        @* </div> *@
-    @* </nav> *@
-</div>
-
+</nav>

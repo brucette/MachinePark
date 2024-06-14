@@ -16,7 +16,5 @@ namespace MachinePark.Core.Domain
         public DateTime Time { get; set; }
 
         public string Data { get; set; }
-
-        //public Machine Machine { get; set; }
     }
 }
