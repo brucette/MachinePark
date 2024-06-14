@@ -12,10 +12,6 @@ namespace MachinePark.UI.Components.Pages
         [Inject]
         public HttpClient Http { get; set; }
 
-        //[Inject]
-        //public NavigationManager NavigationManager { get; set; }
-        //
-
         public List<MachineWithLatestData> Machines { get; set; }
 
         protected async override Task OnInitializedAsync()
@@ -23,10 +19,6 @@ namespace MachinePark.UI.Components.Pages
             Machines = await Http.GetFromJsonAsync<List<MachineWithLatestData>>("api/machines");
         }
 
-        //private void NavigateToSendMessage(Guid MachineId)
-        //{
-        //    NavigationManager.NavigateTo($"/sendmessage/{MachineId}");
-        //}
         private async Task DeleteMachine(MachineWithLatestData machine)
         {
             var response = await Http.DeleteAsync($"api/machines/{machine.MachineId}");
@@ -37,17 +29,6 @@ namespace MachinePark.UI.Components.Pages
             }
         }
 
-        private void UpdateMachine()
-        {
-            //NavigationManager.NavigateTo("/sendmessage");
-                //AppState.Data = "Updated Data";
-        }
-
-        // Just change on UI
-        //private void ChangeStatus(MachineWithLatestData machine)
-        //{
-        //    machine.IsOnline = !machine.IsOnline;
-        //}
         private async Task ChangeStatus(MachineWithLatestData machine)
         {
             var changedMachine = new Machine

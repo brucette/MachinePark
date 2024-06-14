@@ -68,16 +68,12 @@ else
                         <td></td>
                     }
                     <td>
-                        @* <button type="button" class="btn btn-outline-primary me-1" @onclick="() => NavigateToSendMessage(machine.MachineId)">Send data</button> *@
                         <NavLink class="btn me-1" href="@($"/sendmessage/{machine.MachineId}")">
                             <i class="bi bi-chat-right-dots-fill"></i>
                         </NavLink>
                         <button type="button" class="btn me-1" @onclick="() => DeleteMachine(machine)">
                             <i class="bi bi-trash3-fill"></i>
                         </button>
-                        @* <button type="button" class="btn me-1" @onclick="@UpdateMachine">
-                            <i class="bi bi-pencil-fill"></i>
-                        </button> *@
                         <NavLink class="btn me-1" href="@($"/editmachine/{machine.MachineId}")">
                             <i class="bi bi-pencil-fill"></i>
                         </NavLink>

@@ -23,20 +23,5 @@ namespace MachinePark.UI.Components
         { 
             Stats = await Http.GetFromJsonAsync<DashBoardModel>("api/machines/stats");
         }
-
-        //protected override void OnInitialized()
-        //{
-        //    StatsService.OnStatsUpdated += HandleStatsUpdated;
-        //}
-
-        public void Dispose()
-        {
-            AppState.OnStateChange -= HandleStatsUpdated;
-        }
-
-        private void HandleStatsUpdated()
-        {
-            StateHasChanged(); // Trigger re-rendering of the component
-        }
     }
 }

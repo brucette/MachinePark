@@ -18,6 +18,9 @@ namespace MachinePark.UI.Components.Pages
         [Inject]
         public HttpClient Http { get; set; }
 
+        //[Inject]
+        //public NavigationManager NavigationManager { get; set; }
+
         public List<bool> OnlineStatus { get; set; } = [true, false];
 
         protected override async Task OnInitializedAsync()
@@ -25,18 +28,15 @@ namespace MachinePark.UI.Components.Pages
             Machine = await Http.GetFromJsonAsync<Machine>($"api/machines/{MachineId}");
             Machine?.MachineId.ToString();
         }
-       
+
+        //private void NavigateToOverview()
+        //{
+        //    NavigationManager.NavigateTo($"/");
+        //}
+
         private async Task OnEditSubmit()
         {
-            Console.WriteLine($"{Machine.MachineId}{Machine.Name}{Machine.Location}");
-
             var response = await Http.PutAsJsonAsync($"api/machines/{MachineId}", Machine);
-            if (response.IsSuccessStatusCode)
-            {
-                //await OnInitializedAsync();
-
-            }
-
 
             IsSaved = true;
             Message = "Machine edited successfully";
