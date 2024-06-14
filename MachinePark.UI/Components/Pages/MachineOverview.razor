@@ -1,7 +1,9 @@
 ﻿@page "/"
 @rendermode InteractiveServer
 
-<PageTitle>Overview of machines in park</PageTitle>
+<div class="container col-11">
+
+<h3 class="mb-4">Overview</h3>
 
 @if (Machines == null)
 {
@@ -92,3 +94,4 @@ else
         </tbody>
     </table>
 }
+</div>

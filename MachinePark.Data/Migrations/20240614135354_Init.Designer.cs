@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MachinePark.Data.Migrations
 {
     [DbContext(typeof(MachineParkContext))]
-    [Migration("20240612151044_ChangeModelling")]
-    partial class ChangeModelling
+    [Migration("20240614135354_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -34,7 +34,8 @@ namespace MachinePark.Data.Migrations
 
                     b.Property<string>("Data")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<Guid>("MachineId")
                         .HasColumnType("uniqueidentifier");
@@ -43,8 +44,6 @@ namespace MachinePark.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("ReceivedDataId");
-
-                    b.HasIndex("MachineId");
 
                     b.ToTable("ReceivedData");
                 });
@@ -60,26 +59,17 @@ namespace MachinePark.Data.Migrations
 
                     b.Property<string>("Location")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
 
                     b.HasKey("MachineId");
 
                     b.ToTable("Machines");
-                });
-
-            modelBuilder.Entity("MachinePark.Core.Domain.ReceivedData", b =>
-                {
-                    b.HasOne("MachinePark.Data.Domain.Machine", "Machine")
-                        .WithMany()
-                        .HasForeignKey("MachineId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Machine");
                 });
 #pragma warning restore 612, 618
         }

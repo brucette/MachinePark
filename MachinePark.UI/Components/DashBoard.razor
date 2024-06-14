@@ -1,5 +1,5 @@
 ﻿    
-<h3>DashBoard</h3>
+<h3 class="mb-4 text-secondary">DashBoard</h3>
  
 @if (Stats == null)
 {
@@ -7,16 +7,18 @@
 }
 else
 {
-    <div>
-        <div>
-
-            Total machine count: @Stats.TotalCount
-        </div>
-        <div>
-            Machines online: @Stats.MachinesOnline
-        </div>
+    <div class=" text-secondary">
+        <h6 class="text-bold mb-4">
+            <b>Total machine count</b>: @Stats.TotalCount
+        </h6>
+        <h6 class="mb-4">
+            <b>Machines online</b>: @Stats.MachinesOnline
+        </h6>
+        <h6 class="mb-4">
+            <b>Locations</b>: @Stats.Locations
+        </h6>
+        <h6 class="mb-4">
+            <b>Last active</b>: @Stats.LastEditedMachineName
+        </h6>
     </div>
 } 
-
-    @* <div class="pt-2 h-100">
-    </div> *@

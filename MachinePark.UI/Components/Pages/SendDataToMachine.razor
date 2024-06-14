@@ -1,25 +1,27 @@
 ﻿@page "/sendmessage/{MachineId}"
 
-<h3>Send a message to the machine</h3>
-@if (!IsSaved)
-{
-    <EditForm Model="ReceivedData" 
-    OnSubmit="OnMessageSubmit" 
-    Enhance 
-    FormName="AddMessageForm">
+<div class="container col-8 border">
+    <h3>Send a message to the machine</h3>
+    @if (!IsSaved)
+    {
+        <EditForm Model="ReceivedData" 
+            OnSubmit="OnMessageSubmit" 
+            Enhance 
+            FormName="AddMessageForm">
 
-        <div class="row mb-3">
-            <label for="message" class="col-form-label col-md-3">Message: </label>
-            <div class="col-md-8">
-                <InputText id="message" class="form-control col-md-8" @bind-Value="@ReceivedData.Data" placeholder="Enter message"></InputText>
+            <div class="row mb-3">
+                @* <label for="message" class="col-form-label col-md-3">Message: </label> *@
+                <div class="col-md-8">
+                    <InputText id="message" class="form-control col-md-8" @bind-Value="@ReceivedData.Data" placeholder="Enter message"></InputText>
+                </div>
             </div>
-        </div>
-        <div>
-            <button type="submit" class="btn btn-outline-primary ms-1">Submit</button>
-        </div>
-    </EditForm>
-}
-else
-{
-    <h4 class="text-success">@Message</h4>
-}
+            <div>
+                <button type="submit" class="btn btn-outline-secondary ms-1">Submit</button>
+            </div>
+        </EditForm>
+    }
+    else
+    {
+        <h4 class="text-success">@Message</h4>
+    }
+</div>

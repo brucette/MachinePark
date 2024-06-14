@@ -16,21 +16,21 @@ namespace MachinePark.Data.Data
                 new Machine
                 {
                     MachineId = Guid.Parse("e7a22d38-0f96-4b29-b89a-85bda97f9d6e"),
-                    Name = "Some Machine",
+                    Name = "ParkNinja",
                     IsOnline = true,
                     Location = "Stockholm",
                 },
                 new Machine
                 {
                     MachineId = Guid.Parse("f1d98e5d-8d4a-4bda-91c2-5c6d9f99b7e2"),
-                    Name = "Another Machine",
+                    Name = "GuruMachine",
                     IsOnline = true,
                     Location = "Helsinki"
                 },
                 new Machine
                 {
                     MachineId = Guid.Parse("c3d845f5-6d57-42c2-b8ec-30368b3ae8c4"),
-                    Name = "Third Machine",
+                    Name = "SentinelBot",
                     IsOnline = false,
                     Location = "Oslo",
                 }
@@ -42,13 +42,13 @@ namespace MachinePark.Data.Data
                 {
                     MachineId = Guid.Parse("e7a22d38-0f96-4b29-b89a-85bda97f9d6e"),
                     Time = DateTime.Now,
-                    Data = "Initializing"
+                    Data = "Ready to ninja"
                 },
                 new ReceivedData
                 {
                     MachineId = Guid.Parse("c3d845f5-6d57-42c2-b8ec-30368b3ae8c4"),
                     Time = DateTime.Now,
-                    Data = "Measuring"
+                    Data = "Measuring..."
                 }
             };
 

@@ -42,14 +42,30 @@ namespace MachinePark.API.Controllers
         {
             var totalCount = await _context.Machines.CountAsync();
             var machinesOnline = await _context.Machines.CountAsync(m => m.IsOnline);
-            //var lastEditedMachine = await _context.Machines.OrderByDescending(m => m.LastDataReceived).FirstOrDefaultAsync();
+            var locations = await _context.Machines.Select(m => m.Location).Distinct().CountAsync();
+
+            var lastEditedMachineName = "None";
+            var lastEditedMachineId = await _context.ReceivedData
+                                        .OrderByDescending(rd => rd.Time)
+                                        .Select(m => m.MachineId)
+                                        .FirstOrDefaultAsync();
+
+            if (lastEditedMachineId != null)
+            {
+                // Use lastEditedMachineId
+                lastEditedMachineName = await _context.Machines
+                                        .Where(m => m.MachineId == lastEditedMachineId)
+                                        .Select(m => m.Name)
+                                        .FirstOrDefaultAsync();
+            }
 
             var stats = new DashBoardModel
             {
                 TotalCount = totalCount,
                 MachinesOnline = machinesOnline,
-                //LastEditedMachineId = lastEditedMachine?.Id ?? Guid.Empty,
-                //LastEditedMachineTimestamp = lastEditedMachine?.LastDataReceived ?? DateTime.MinValue
+                Locations = locations,
+                LastEditedMachineName = lastEditedMachineName
+                
             };
 
             return Ok(stats);

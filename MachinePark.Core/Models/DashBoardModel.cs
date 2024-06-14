@@ -9,8 +9,13 @@ namespace MachinePark.Core.Models
     public class DashBoardModel
     {
         public int TotalCount { get; set; }
+
         public int MachinesOnline { get; set; }
-        //public Guid LastEditedMachineId { get; set; }
-        //public DateTime LastEditedMachineTimestamp { get; set; }
+
+        public int Locations { get; set; }
+
+        public Guid LastEditedMachineId { get; set; }
+        
+        public string LastEditedMachineName { get; set; }
     }
 }
