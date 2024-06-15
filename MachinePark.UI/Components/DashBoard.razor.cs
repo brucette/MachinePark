@@ -9,9 +9,6 @@ namespace MachinePark.UI.Components
         [Inject]
         public HttpClient Http { get; set; }
 
-        [Inject]
-        public AppState AppState { get; set; }
-
         public DashBoardModel Stats { get; set; }
 
         protected async override Task OnInitializedAsync()

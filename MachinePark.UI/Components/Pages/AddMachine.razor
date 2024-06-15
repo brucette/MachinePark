@@ -6,6 +6,8 @@
     @if (!IsSaved)
     {
         <EditForm Model="Machine" OnSubmit="OnSubmit" Enhance FormName="AddMachineForm" class="form">
+            <DataAnnotationsValidator />
+
             <div class="row mb-3">
                 <label for="name" class="col-form-label col-md-3">Name: </label>
                 <div class="col-md-8">
@@ -37,7 +39,6 @@
                 <button type="submit" class="btn btn-outline-secondary ms-1">Submit</button>
             </div>
         </EditForm>
-
     }
     else
     {
@@ -47,5 +48,4 @@
     <NavLink class="btn me-1" href="/">
         <button type="button" class="btn btn-outline-primary">Back to overview</button>
     </NavLink>
-
 </div>

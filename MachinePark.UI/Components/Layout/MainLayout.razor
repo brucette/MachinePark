@@ -1,6 +1,5 @@
 ﻿@using MachinePark.UI.State
 @inherits LayoutComponentBase
-@inject AppState AppState
 
 <div class="page">
     <div class="sidebar pt-5 px-3 mt-5">
@@ -21,16 +20,3 @@
         </div>
     </main>
 </div>
-
-
-@code {
-    protected override void OnInitialized()
-    {
-        AppState.OnStateChange += StateHasChanged;
-    }
-
-    public void Dispose()
-    {
-        AppState.OnStateChange -= StateHasChanged;
-    }
-}
