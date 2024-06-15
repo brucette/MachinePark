@@ -15,4 +15,18 @@ public class MachineParkContext : DbContext
 
         public DbSet<Machine> Machines { get; set; } = default!;
         public DbSet<ReceivedData> ReceivedData { get; set; } = default!;
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+
+        modelBuilder.Entity<ReceivedData>()
+           .HasKey(rd => rd.ReceivedDataId);
+
+        modelBuilder.Entity<ReceivedData>()
+            .HasOne<Machine>()  // Specify the type of the related entity
+            .WithMany()
+            .HasForeignKey(rd => rd.MachineId)
+            .OnDelete(DeleteBehavior.Cascade);
     }
+}

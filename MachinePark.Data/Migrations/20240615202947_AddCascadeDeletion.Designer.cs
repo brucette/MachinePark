@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MachinePark.Data.Migrations
 {
     [DbContext(typeof(MachineParkContext))]
-    [Migration("20240614135354_Init")]
-    partial class Init
+    [Migration("20240615202947_AddCascadeDeletion")]
+    partial class AddCascadeDeletion
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -45,6 +45,8 @@ namespace MachinePark.Data.Migrations
 
                     b.HasKey("ReceivedDataId");
 
+                    b.HasIndex("MachineId");
+
                     b.ToTable("ReceivedData");
                 });
 
@@ -70,6 +72,15 @@ namespace MachinePark.Data.Migrations
                     b.HasKey("MachineId");
 
                     b.ToTable("Machines");
+                });
+
+            modelBuilder.Entity("MachinePark.Core.Domain.ReceivedData", b =>
+                {
+                    b.HasOne("MachinePark.Data.Domain.Machine", null)
+                        .WithMany()
+                        .HasForeignKey("MachineId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

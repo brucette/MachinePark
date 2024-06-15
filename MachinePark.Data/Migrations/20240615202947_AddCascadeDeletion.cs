@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace MachinePark.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class Init : Migration
+    public partial class AddCascadeDeletion : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -38,17 +38,28 @@ namespace MachinePark.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ReceivedData", x => x.ReceivedDataId);
+                    table.ForeignKey(
+                        name: "FK_ReceivedData_Machines_MachineId",
+                        column: x => x.MachineId,
+                        principalTable: "Machines",
+                        principalColumn: "MachineId",
+                        onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ReceivedData_MachineId",
+                table: "ReceivedData",
+                column: "MachineId");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Machines");
+                name: "ReceivedData");
 
             migrationBuilder.DropTable(
-                name: "ReceivedData");
+                name: "Machines");
         }
     }
 }

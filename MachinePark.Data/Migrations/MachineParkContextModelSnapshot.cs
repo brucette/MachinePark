@@ -42,6 +42,8 @@ namespace MachinePark.Data.Migrations
 
                     b.HasKey("ReceivedDataId");
 
+                    b.HasIndex("MachineId");
+
                     b.ToTable("ReceivedData");
                 });
 
@@ -67,6 +69,15 @@ namespace MachinePark.Data.Migrations
                     b.HasKey("MachineId");
 
                     b.ToTable("Machines");
+                });
+
+            modelBuilder.Entity("MachinePark.Core.Domain.ReceivedData", b =>
+                {
+                    b.HasOne("MachinePark.Data.Domain.Machine", null)
+                        .WithMany()
+                        .HasForeignKey("MachineId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

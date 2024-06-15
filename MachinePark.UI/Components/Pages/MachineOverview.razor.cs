@@ -38,6 +38,7 @@ namespace MachinePark.UI.Components.Pages
             if (response.IsSuccessStatusCode)
             {
                 await OnAfterRenderAsync(false);
+                NavigateToOverview();
             }
         }
 

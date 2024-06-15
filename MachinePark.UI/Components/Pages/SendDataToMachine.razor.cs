@@ -25,7 +25,7 @@ namespace MachinePark.UI.Components.Pages
         private async Task OnMessageSubmit()
         {
             ReceivedData.MachineId = Guid.Parse(MachineId);
-            ReceivedData.Time = DateTime.UtcNow;
+            ReceivedData.Time = DateTime.Now;
 
             await Http.PostAsJsonAsync("api/receiveddata", ReceivedData);
             IsSaved = true;
